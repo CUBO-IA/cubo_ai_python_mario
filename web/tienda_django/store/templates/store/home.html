@@ -1,0 +1,135 @@
+{% extends "store/base.html" %}
+
+{% load static %}
+
+{% block title %}
+Inicio | Tienda Django
+{% endblock %}
+
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'store/css/home.css' %}"
+>
+
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="container">
+
+        <h1>
+            Bienvenido a nuestra tienda
+        </h1>
+
+        <p>
+            Encuentra nuestros productos.
+        </p>
+
+        <a
+            href="{% url 'store:products' %}"
+            class="button"
+        >
+            Ver productos
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="container section">
+
+    <h2>
+        Categorías
+    </h2>
+
+    <div class="categories">
+
+        {% for category in categories %}
+
+            <div class="category-card">
+
+                {% if category.image %}
+
+                    <img
+                        src="{{ category.image.url }}"
+                        alt="{{ category.name }}"
+                    >
+
+                {% endif %}
+
+                <h3>
+                    {{ category.name }}
+                </h3>
+
+            </div>
+
+        {% empty %}
+
+            <p>
+                No hay categorías disponibles.
+            </p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<section class="container section">
+
+    <h2>
+        Productos destacados
+    </h2>
+
+    <div class="products">
+
+        {% for product in products %}
+
+            <article class="product-card">
+
+                {% if product.image %}
+
+                    <img
+                        src="{{ product.image.url }}"
+                        alt="{{ product.name }}"
+                    >
+
+                {% endif %}
+
+                <h3>
+                    {{ product.name }}
+                </h3>
+
+                <p>
+                    ${{ product.price }}
+                </p>
+
+                <a
+                    href="{% url 'store:product_detail' product.id %}"
+                >
+                    Ver producto
+                </a>
+
+            </article>
+
+        {% empty %}
+
+            <p>
+                No hay productos disponibles.
+            </p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

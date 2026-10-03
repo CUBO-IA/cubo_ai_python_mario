@@ -1,0 +1,97 @@
+{% extends "store/base.html" %}
+
+{% load static %}
+
+{% block title %}
+Productos | Tienda Django
+{% endblock %}
+
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'store/css/products.css' %}"
+>
+
+{% endblock %}
+
+
+{% block content %}
+
+<section class="container section">
+
+    <h1>
+        Productos
+    </h1>
+
+
+    <div class="categories-filter">
+
+        <a href="{% url 'store:products' %}">
+            Todos
+        </a>
+
+        {% for category in categories %}
+
+            <a
+                href="?category={{ category.id }}"
+            >
+                {{ category.name }}
+            </a>
+
+        {% endfor %}
+
+    </div>
+
+
+    <div class="products">
+
+        {% for product in products %}
+
+            <article class="product-card">
+
+                {% if product.image %}
+
+                    <img
+                        src="{{ product.image.url }}"
+                        alt="{{ product.name }}"
+                    >
+
+                {% endif %}
+
+                <h2>
+                    {{ product.name }}
+                </h2>
+
+                <p>
+                    {{ product.description|truncatewords:15 }}
+                </p>
+
+                <strong>
+                    ${{ product.price }}
+                </strong>
+
+                <br>
+
+                <a
+                    href="{% url 'store:product_detail' product.id %}"
+                >
+                    Ver detalles
+                </a>
+
+            </article>
+
+        {% empty %}
+
+            <p>
+                No hay productos disponibles.
+            </p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}
