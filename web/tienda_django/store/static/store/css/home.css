@@ -1,0 +1,45 @@
+.hero {
+    padding: 100px 0;
+    background-color: #ddd;
+    text-align: center;
+}
+
+.hero h1 {
+    margin-bottom: 15px;
+    font-size: 40px;
+}
+
+.hero p {
+    margin-bottom: 25px;
+}
+
+.categories,
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.category-card,
+.product-card {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.category-card img,
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.product-card h3 {
+    margin: 15px 0 10px;
+}
+
+.product-card p {
+    margin-bottom: 15px;
+}

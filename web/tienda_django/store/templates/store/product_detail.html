@@ -1,0 +1,73 @@
+{% extends "store/base.html" %}
+
+{% load static %}
+
+{% block title %}
+{{ product.name }} | Tienda Django
+{% endblock %}
+
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'store/css/product_detail.css' %}"
+>
+
+{% endblock %}
+
+
+{% block content %}
+
+<section class="container product-detail">
+
+    <div class="product-image">
+
+        {% if product.image %}
+
+            <img
+                src="{{ product.image.url }}"
+                alt="{{ product.name }}"
+            >
+
+        {% else %}
+
+            <p>
+                No hay imagen disponible.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <div class="product-info">
+
+        <p>
+            {{ product.category.name }}
+        </p>
+
+        <h1>
+            {{ product.name }}
+        </h1>
+
+        <p>
+            {{ product.description }}
+        </p>
+
+        <h2>
+            ${{ product.price }}
+        </h2>
+
+        <a
+            href="{% url 'store:products' %}"
+            class="button"
+        >
+            Volver a productos
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

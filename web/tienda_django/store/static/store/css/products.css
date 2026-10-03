@@ -1,0 +1,43 @@
+.categories-filter {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 25px 0;
+}
+
+.categories-filter a {
+    padding: 10px 15px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.categories-filter a:hover {
+    background-color: #ddd;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.product-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.product-card h2 {
+    margin: 15px 0 10px;
+}
+
+.product-card p {
+    margin-bottom: 15px;
+}
